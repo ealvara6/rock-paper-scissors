@@ -6,17 +6,15 @@ let getComputerChoice = () => {
     console.log(computerChoice);
 }
 
-let computerSelection = getComputerChoice();
-
 let playRound = (computerSelection, playerSelection) => {
     let result = "";
     if(computerSelection === 'rock') {
         switch(playerSelection) {
             case "paper":
-                result = "paper beats rock. You win the round!";
+                result = "Paper beats rock. You win the round!";
                 break;
             case "scissors":
-                result = "rock beats scissors. You lose the round."
+                result = "Rock beats scissors. You lose the round.";
                 break;
             default:
                 result = "It's a tie!";
@@ -24,8 +22,28 @@ let playRound = (computerSelection, playerSelection) => {
     }
     if(computerSelection === "scissors") {
         switch(playerSelection) {
+            case "rock":
+                result = "Rock beats scissors. You win the round!";
+                break;
             case "paper":
-                result = ""
+                result = "Scissors beats paper. You lose the round.";
+                break;
+            default:
+                result = "It's a tie!";
+        }
+    }
+    if(computerSelection === "paper") {
+        switch(playerSelection) {
+            case "scissors":
+                result = "Scissors beats paper. You win the round!"
+                break;
+            case "rock":
+                result = "Paper beats rock. You lose the round.";
+                break;
+            default:
+                result = "It's a tie!";
         }
     }
 }
+
+let computerSelection = getComputerChoice();
