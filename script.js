@@ -60,7 +60,24 @@ let game = () => {
         console.log(`Computer's Choice: ${computerSelection}\nPlayer's Choice: ${playerSelection}`.toUpperCase());
         let result = playRound(computerSelection, playerSelection);
         console.log(result[0]);
+
+        switch(result[1]){
+            case "player":
+                playerScore++;
+                break;
+            case "computer":
+                computerScore++;
+                break;
+        }
+        console.log(`SCORE:\nPLAYER: ${playerScore}\tCOMPUTER: ${computerScore}`);
     }
+
+    if(playerScore > computerScore)
+        console.log("You win the game!");
+    else if(playerScore < computerScore)
+        console.log("You lose the game. Better luck next time!");
+    else
+        console.log("It's a tie!");
 }
 
 game();
