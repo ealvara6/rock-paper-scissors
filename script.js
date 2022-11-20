@@ -6,8 +6,9 @@ let getComputerChoice = () => {
     return computerChoice;
 }
 
-let playRound = (computerSelection, playerSelection) => {
+let playRound = (playerSelection) => {
     let result;
+    let computerSelection = getComputerChoice();
     if(computerSelection === 'rock') {
         switch(playerSelection) {
             case "paper":
@@ -45,39 +46,46 @@ let playRound = (computerSelection, playerSelection) => {
         }
     }
 
-    return result;
+    console.log(result);
 }
 
-let game = () => {
-    alert("Play Rock Paper Scissors against a computer in a best of 5.");
-    let playerScore = 0;
-    let computerScore = 0;
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        playRound(button.id);
+    })
+})
 
-    for(let i = 0; i < 5; i++){
-        let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
-        let computerSelection = getComputerChoice();
+// let game = () => {
+//     alert("Play Rock Paper Scissors against a computer in a best of 5.");
+//     let playerScore = 0;
+//     let computerScore = 0;
+
+//     for(let i = 0; i < 5; i++){
+//         let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
+//         let computerSelection = getComputerChoice();
         
-        console.log(`Computer's Choice: ${computerSelection}\nPlayer's Choice: ${playerSelection}`.toUpperCase());
-        let result = playRound(computerSelection, playerSelection);
-        console.log(result[0]);
+//         console.log(`Computer's Choice: ${computerSelection}\nPlayer's Choice: ${playerSelection}`.toUpperCase());
+//         let result = playRound(computerSelection, playerSelection);
+//         console.log(result[0]);
 
-        switch(result[1]){
-            case "player":
-                playerScore++;
-                break;
-            case "computer":
-                computerScore++;
-                break;
-        }
-        console.log(`SCORE:\nPLAYER: ${playerScore}\tCOMPUTER: ${computerScore}`);
-    }
+//         switch(result[1]){
+//             case "player":
+//                 playerScore++;
+//                 break;
+//             case "computer":
+//                 computerScore++;
+//                 break;
+//         }
+//         console.log(`SCORE:\nPLAYER: ${playerScore}\tCOMPUTER: ${computerScore}`);
+//     }
 
-    if(playerScore > computerScore)
-        console.log("You win the game!");
-    else if(playerScore < computerScore)
-        console.log("You lose the game. Better luck next time!");
-    else
-        console.log("It's a tie!");
-}
+//     if(playerScore > computerScore)
+//         console.log("You win the game!");
+//     else if(playerScore < computerScore)
+//         console.log("You lose the game. Better luck next time!");
+//     else
+//         console.log("It's a tie!");
+// }
 
-game();
+// game();
