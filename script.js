@@ -6,6 +6,13 @@ let getComputerChoice = () => {
     return computerChoice;
 }
 
+let displayResult = (result) => {
+    const container = document.querySelector('div.results')
+    let div = document.createElement('div');
+    div.textContent = result;
+    container.appendChild(div);
+}
+
 let playRound = (playerSelection) => {
     let result;
     let computerSelection = getComputerChoice();
@@ -45,7 +52,7 @@ let playRound = (playerSelection) => {
                 result = ["It's a tie!", "tie"];
         }
     }
-
+    displayResult(result);
     console.log(result);
 }
 
