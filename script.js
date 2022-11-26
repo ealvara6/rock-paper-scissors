@@ -1,16 +1,36 @@
 'use strict';
 
+let playerWins = 0;
+let computerWins = 0;
+
 let getComputerChoice = () => {
     let choices = ['rock', 'paper', 'scissors'];
     let computerChoice = choices[Math.floor(Math.random() * choices.length)];
     return computerChoice;
 }
 
+let checkWinner = () => {
+    if(playerWins === 5) {
+        const container = document.querySelector("div.results");
+        let winner = document.createElement('div');
+        winner.textContent = "Player Wins the Game!";
+        container.appendChild(winner);
+    }
+    if(computerWins === 5) {
+        const container = document.querySelector("div.results");
+        let winner = document.createElement('div');
+        winner.textContent = "Computer Wins the Game!";
+        container.appendChild(winner);       
+    }
+}
+
 let displayResult = (result) => {
+
     const container = document.querySelector('div.results')
     let div = document.createElement('div');
     div.textContent = result;
     container.appendChild(div);
+    checkWinner();
 }
 
 let playRound = (playerSelection) => {
@@ -19,37 +39,43 @@ let playRound = (playerSelection) => {
     if(computerSelection === 'rock') {
         switch(playerSelection) {
             case "paper":
-                result = ["Paper beats rock. You win the round!", "player"];
+                result = "Paper beats rock. You win the round!"; 
+                playerWins++;
                 break;
             case "scissors":
-                result = ["Rock beats scissors. You lose the round.", "computer"];
+                result = "Rock beats scissors. You lose the round."; 
+                computerWins++;
                 break;
             default:
-                result = ["It's a tie!", "tie"];
+                result = "It's a tie!";
         }
     }
     if(computerSelection === "scissors") {
         switch(playerSelection) {
             case "rock":
-                result = ["Rock beats scissors. You win the round!", "player"];
+                result = "Rock beats scissors. You win the round!";
+                playerWins++;
                 break;
             case "paper":
-                result = ["Scissors beats paper. You lose the round.", "computer"];
+                result = "Scissors beats paper. You lose the round.";
+                computerWins++;
                 break;
             default:
-                result = ["It's a tie!", "tie"];
+                result = "It's a tie!";
         }
     }
     if(computerSelection === "paper") {
         switch(playerSelection) {
             case "scissors":
-                result = ["Scissors beats paper. You win the round!", "player"];
+                result = "Scissors beats paper. You win the round!";
+                playerWins++;
                 break;
             case "rock":
-                result = ["Paper beats rock. You lose the round.", "computer"];
+                result = "Paper beats rock. You lose the round.";
+                computerWins++;
                 break;
             default:
-                result = ["It's a tie!", "tie"];
+                result = "It's a tie!";
         }
     }
     displayResult(result);
