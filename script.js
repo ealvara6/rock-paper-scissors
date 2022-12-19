@@ -9,6 +9,16 @@ let getComputerChoice = () => {
     return computerChoice;
 }
 
+let changePlayerScore = () => {
+    const container = document.querySelector("div.player-score");
+    container.textContent = `Player Score: ${playerWins}`;
+}
+
+let changeComputerScore = () => {
+    const container = document.querySelector("div.computer-score");
+    container.textContent = `Computer Score: ${computerWins}`;
+}
+
 let checkWinner = () => {
     if(playerWins === 5) {
         const container = document.querySelector("div.results");
@@ -27,9 +37,10 @@ let checkWinner = () => {
 let displayResult = (result) => {
 
     const container = document.querySelector('div.results')
-    let div = document.createElement('div');
-    div.textContent = result;
-    container.appendChild(div);
+    // let div = document.createElement('div');
+    // div.textContent = result;
+    container.textContent = result;
+    // container.appendChild(div);
     checkWinner();
 }
 
@@ -41,10 +52,12 @@ let playRound = (playerSelection) => {
             case "paper":
                 result = "Paper beats rock. You win the round!"; 
                 playerWins++;
+                changePlayerScore();
                 break;
             case "scissors":
                 result = "Rock beats scissors. You lose the round."; 
                 computerWins++;
+                changeComputerScore();
                 break;
             default:
                 result = "It's a tie!";
@@ -55,10 +68,12 @@ let playRound = (playerSelection) => {
             case "rock":
                 result = "Rock beats scissors. You win the round!";
                 playerWins++;
+                changePlayerScore();
                 break;
             case "paper":
                 result = "Scissors beats paper. You lose the round.";
                 computerWins++;
+                changeComputerScore();
                 break;
             default:
                 result = "It's a tie!";
@@ -69,10 +84,12 @@ let playRound = (playerSelection) => {
             case "scissors":
                 result = "Scissors beats paper. You win the round!";
                 playerWins++;
+                changePlayerScore();
                 break;
             case "rock":
                 result = "Paper beats rock. You lose the round.";
                 computerWins++;
+                changeComputerScore();
                 break;
             default:
                 result = "It's a tie!";
